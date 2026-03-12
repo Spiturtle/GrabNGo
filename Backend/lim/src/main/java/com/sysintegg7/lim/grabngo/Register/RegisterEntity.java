@@ -16,7 +16,7 @@ public class RegisterEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = true)
     private String studentId;
 
     @Column(unique = true, nullable = false)
@@ -27,4 +27,7 @@ public class RegisterEntity {
 
     @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false, columnDefinition = "varchar(255) default 'STUDENT'")
+    private String role = "STUDENT";
 }

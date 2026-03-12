@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import './register.css'
+import { registerUser } from '../../api/authApi'
+import logoImg from '../../components/logo/logo.png'
+import bgImg from '../../components/background/Lumpia.jpg'
 
 function Register() {
 const navigate = useNavigate()
@@ -69,13 +71,7 @@ const handleSubmit = async (e) => {
       return
     }
     try {
-      const response = await axios.post('http://localhost:8080/api/auth/register', {
-        studentId: formData.studentId,
-        institutionalEmail: formData.email,
-        fullName: formData.fullName,
-        password: formData.password,
-        confirmPassword: formData.confirmPassword,
-      })
+      const response = await registerUser(formData)
       alert(response.data)
       navigate('/login')
     } catch (err) {
@@ -90,14 +86,14 @@ const handleSubmit = async (e) => {
 return (
     <div className="page-wrapper">
     <nav className="navbar">
-        <span className="navbar-brand">GrabNGo</span>
+        <img src={logoImg} alt="GrabNGo" className="navbar-logo" />
         <div className="navbar-actions">
         <button className="nav-btn active" onClick={() => navigate('/')}>Sign up</button>
-        <button className="nav-btn" onClick={() => navigate('/login')}>Login</button>
+        <button className="nav-btn" onClick={() => navigate('/login')}>Sign in</button>
         </div>
     </nav>
 
-    <main className="main-content">
+    <main className="main-content" style={{ backgroundImage: `url(${bgImg})` }}>
         <div className="auth-card">
         <h2 className="auth-title">Sign Up</h2>
         <form onSubmit={handleSubmit} className="auth-form">
