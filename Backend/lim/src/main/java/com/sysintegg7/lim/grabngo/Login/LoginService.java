@@ -20,15 +20,15 @@ public class LoginService {
         Optional<RegisterEntity> userOpt = loginRepository.findByInstitutionalEmail(dto.getInstitutionalEmail());
 
         if (userOpt.isEmpty()) {
-            return new LoginEntity("Invalid email or password.", null, null);
+            return new LoginEntity("Invalid email or password.", null, null, null);
         }
 
         RegisterEntity user = userOpt.get();
 
         if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
-            return new LoginEntity("Invalid email or password.", null, null);
+            return new LoginEntity("Invalid email or password.", null, null, null);
         }
 
-        return new LoginEntity("Login successful.", user.getInstitutionalEmail(), user.getFullName());
+        return new LoginEntity("Login successful.", user.getInstitutionalEmail(), user.getFullName(), user.getStudentId());
     }
 }

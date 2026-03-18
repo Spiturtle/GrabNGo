@@ -20,4 +20,22 @@ public class RegisterController {
         }
         return ResponseEntity.badRequest().body(result);
     }
+
+    @PostMapping("/change-password")
+    public ResponseEntity<String> changePassword(@RequestBody ChangePasswordDTO dto) {
+        String result = registerService.changePassword(dto);
+        if (result.equals("Password changed successfully.")) {
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+
+    @PostMapping("/update-profile")
+    public ResponseEntity<String> updateProfile(@RequestBody UpdateProfileDTO dto) {
+        String result = registerService.updateProfile(dto);
+        if (result.equals("Profile updated successfully.")) {
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
 }

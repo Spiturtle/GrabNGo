@@ -11,4 +11,5 @@ public class LoginEntity {
     private String message;
     private String institutionalEmail;
     private String fullName;
+    private String studentId;
 }

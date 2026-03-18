@@ -23,8 +23,14 @@ function Login() {
     setError('')
     try {
       const response = await loginUser(formData.email, formData.password)
+      const userData = {
+        email: response.data.institutionalEmail || formData.email,
+        fullName: response.data.fullName || '',
+        studentId: response.data.studentId || '',
+      }
+      localStorage.setItem('grabngoUser', JSON.stringify(userData))
       alert(`Welcome, ${response.data.fullName}!`)
-      navigate('/')
+      navigate('/dashboard')
     } catch (err) {
       setError(err.response?.data?.message || 'Invalid email or password.')
     }

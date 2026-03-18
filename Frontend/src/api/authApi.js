@@ -16,3 +16,17 @@ export const registerUser = (formData) =>
     password: formData.password,
     confirmPassword: formData.confirmPassword,
   })
+
+export const changePassword = ({ email, currentPassword, newPassword, confirmPassword }) =>
+  axios.post(`${BASE_URL}/change-password`, {
+    institutionalEmail: email,
+    currentPassword,
+    newPassword,
+    confirmPassword,
+  })
+
+export const updateProfileName = ({ email, fullName }) =>
+  axios.post(`${BASE_URL}/update-profile`, {
+    institutionalEmail: email,
+    fullName,
+  })
