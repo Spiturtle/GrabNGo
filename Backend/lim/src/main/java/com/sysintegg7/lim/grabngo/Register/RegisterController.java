@@ -38,4 +38,13 @@ public class RegisterController {
         }
         return ResponseEntity.badRequest().body(result);
     }
+
+    @GetMapping("/profile")
+    public ResponseEntity<?> getProfile(@RequestParam String institutionalEmail) {
+        ProfileDTO profile = registerService.getProfile(institutionalEmail);
+        if (profile == null) {
+            return ResponseEntity.status(404).body("User not found.");
+        }
+        return ResponseEntity.ok(profile);
+    }
 }

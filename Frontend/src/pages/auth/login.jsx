@@ -23,10 +23,12 @@ function Login() {
     setError('')
     try {
       const response = await loginUser(formData.email, formData.password)
+      const responseStudentId =
+        response.data.studentId || response.data.studentID || response.data.student_id || ''
       const userData = {
         email: response.data.institutionalEmail || formData.email,
         fullName: response.data.fullName || '',
-        studentId: response.data.studentId || '',
+        studentId: responseStudentId,
       }
       localStorage.setItem('grabngoUser', JSON.stringify(userData))
       alert(`Welcome, ${response.data.fullName}!`)

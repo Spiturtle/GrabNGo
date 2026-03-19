@@ -30,3 +30,8 @@ export const updateProfileName = ({ email, fullName }) =>
     institutionalEmail: email,
     fullName,
   })
+
+export const fetchUserProfile = (email) =>
+  axios.get(`${BASE_URL}/profile`, {
+    params: { institutionalEmail: email },
+  })

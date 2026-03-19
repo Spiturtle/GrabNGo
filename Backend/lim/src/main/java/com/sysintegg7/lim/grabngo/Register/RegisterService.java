@@ -100,4 +100,22 @@ public class RegisterService {
 
         return "Profile updated successfully.";
     }
+
+    public ProfileDTO getProfile(String institutionalEmail) {
+        if (institutionalEmail == null || institutionalEmail.isBlank()) {
+            return null;
+        }
+
+        Optional<RegisterEntity> userOpt = registerRepository.findByInstitutionalEmail(institutionalEmail);
+        if (userOpt.isEmpty()) {
+            return null;
+        }
+
+        RegisterEntity user = userOpt.get();
+        ProfileDTO profile = new ProfileDTO();
+        profile.setInstitutionalEmail(user.getInstitutionalEmail());
+        profile.setFullName(user.getFullName());
+        profile.setStudentId(user.getStudentId());
+        return profile;
+    }
 }
