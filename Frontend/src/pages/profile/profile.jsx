@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './profile.css'
 import logoOrange from '../../components/logo/logoorange.png'
 import DashboardSidebar from '../../components/sidebar/DashboardSidebar'
-import { changePassword, updateProfileName } from '../../api/authApi'
+import { changePassword, fetchUserProfile, updateProfileName } from '../../api/authApi'
 
 const passwordRules = [
   { key: 'length', label: 'At least 8 characters', test: (p) => p.length >= 8 },
@@ -70,6 +70,15 @@ function LogoutIcon() {
   )
 }
 
+function CameraIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M4 8h4l1.2-2h5.6L16 8h4v10H4z" />
+      <circle cx="12" cy="13" r="3.5" />
+    </svg>
+  )
+}
+
 function Profile() {
   const navigate = useNavigate()
   const [showChangePassword, setShowChangePassword] = useState(false)
@@ -107,6 +116,29 @@ function Profile() {
     }
   })
   const [editFullName, setEditFullName] = useState(user.fullName)
+
+  useEffect(() => {
+    const hydrateProfile = async () => {
+      if (!user.email || user.email === 'Not available') {
+        return
+      }
+
+      try {
+        const response = await fetchUserProfile(user.email)
+        const refreshedUser = {
+          email: response.data.institutionalEmail || user.email,
+          fullName: response.data.fullName || user.fullName || 'GrabNGo User',
+          studentId: response.data.studentId || user.studentId || 'Not available',
+        }
+        setUser(refreshedUser)
+        localStorage.setItem('grabngoUser', JSON.stringify(refreshedUser))
+      } catch {
+        // Keep local profile data if server profile fetch fails.
+      }
+    }
+
+    hydrateProfile()
+  }, [])
 
   const handleSignOut = () => {
     localStorage.removeItem('grabngoUser')
@@ -245,9 +277,19 @@ function Profile() {
         <h1 className="profile-title">My Profile</h1>
 
         <section className="profile-banner" aria-label="Profile banner">
-          <span className="profile-avatar" aria-hidden="true">
-            <ProfileIcon />
-          </span>
+          <div className="profile-avatar-wrap">
+            <span className="profile-avatar" aria-hidden="true">
+              <span className="profile-avatar-placeholder" />
+            </span>
+            <button
+              type="button"
+              className="avatar-camera-button"
+              aria-label="Change profile picture"
+              disabled
+            >
+              <CameraIcon />
+            </button>
+          </div>
           <p>{user.fullName}</p>
         </section>
 
@@ -301,9 +343,6 @@ function Profile() {
             onClick={() => setShowChangePassword((prev) => !prev)}
           >
             Change Password
-          </button>
-          <button type="button" className="placeholder-button" disabled>
-            Change Profile Picture
           </button>
           <button type="button" className="logout-button" onClick={handleLogoutClick}>
             Sign Out
