@@ -23,14 +23,16 @@ function Login() {
     setError('')
     try {
       const response = await loginUser(formData.email, formData.password)
+      const role = (response.data.role || 'STUDENT').toUpperCase()
       const userData = {
+        role,
         email: response.data.institutionalEmail || formData.email,
         fullName: response.data.fullName || '',
         studentId: response.data.studentId || '',
       }
       localStorage.setItem('grabngoUser', JSON.stringify(userData))
       alert(`Welcome, ${response.data.fullName}!`)
-      navigate('/dashboard')
+      navigate(role === 'ADMIN' ? '/admin/dashboard' : '/dashboard')
     } catch (err) {
       setError(err.response?.data?.message || 'Invalid email or password.')
     }
@@ -51,7 +53,7 @@ function Login() {
           <h2 className="auth-title">Sign In</h2>
           <form onSubmit={handleSubmit} className="auth-form">
             <div className="form-group">
-              <label>Institutional Email</label>
+              <label>Email</label>
               <input
                 type="email"
                 name="email"

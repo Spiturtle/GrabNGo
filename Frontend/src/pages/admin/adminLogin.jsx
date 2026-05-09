@@ -18,7 +18,16 @@ function AdminLogin() {
     e.preventDefault()
     setError('')
     try {
-      const response = await adminLogin(formData.email, formData.password)
+      await adminLogin(formData.email, formData.password)
+      localStorage.setItem(
+        'grabngoUser',
+        JSON.stringify({
+          role: 'ADMIN',
+          email: formData.email,
+          fullName: 'Admin',
+          studentId: '',
+        })
+      )
       alert(`Welcome, Admin!`)
       navigate('/admin/dashboard')
     } catch (err) {

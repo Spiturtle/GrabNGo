@@ -1,0 +1,72 @@
+:root {
+  --grabngo-midnight: #2b2d42;
+  --grabngo-orange: #ef7b45;
+  --grabngo-surface: #edf2f4;
+}
+
+.calendar-dial {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calendar-display {
+  background: linear-gradient(180deg, #fff, #fff);
+  border: 1px solid rgba(43, 45, 66, 0.06);
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-display-date {
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--grabngo-midnight);
+}
+
+.calendar-controls {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.calendar-wheel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calendar-wheel label {
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(43, 45, 66, 0.8);
+}
+
+.calendar-wheel select {
+  min-width: 96px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(43, 45, 66, 0.12);
+  background: var(--grabngo-surface);
+  color: var(--grabngo-midnight);
+  font-weight: 700;
+}
+
+.calendar-help-text {
+  font-size: 12px;
+  color: rgba(43, 45, 66, 0.6);
+  margin: 0;
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+  .calendar-controls {
+    flex-wrap: wrap;
+  }
+
+  .calendar-wheel select {
+    min-width: 72px;
+  }
+}

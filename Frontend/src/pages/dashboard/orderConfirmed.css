@@ -1,0 +1,145 @@
+:root {
+  --grabngo-midnight: #2b2d42;
+  --grabngo-orange: #ef7b45;
+  --grabngo-surface: #edf2f4;
+  --grabngo-red: #ed4848;
+}
+
+.order-confirm-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: linear-gradient(180deg, #ffffff 0%, var(--grabngo-surface) 100%);
+}
+
+.order-confirm-card {
+  width: min(420px, 100%);
+  background: #ffffff;
+  border: 1px solid rgba(43, 45, 66, 0.07);
+  border-radius: 16px;
+  box-shadow: 0 10px 22px rgba(43, 45, 66, 0.06);
+  padding: 24px 20px 20px;
+}
+
+.order-confirm-icon-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.order-confirm-icon-ring {
+  width: 66px;
+  height: 66px;
+  border-radius: 999px;
+  background: rgba(28, 182, 122, 0.12);
+  display: grid;
+  place-items: center;
+}
+
+.order-confirm-icon-ring svg {
+  width: 34px;
+  height: 34px;
+  fill: #ffffff;
+  stroke: #0cae58;
+  stroke-width: 1.5;
+}
+
+.order-confirm-card h1 {
+  margin: 0;
+  text-align: center;
+  color: var(--grabngo-midnight);
+  font-size: 30px;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.order-confirm-subtitle {
+  text-align: center;
+  margin: 8px 0 18px;
+  color: rgba(43, 45, 66, 0.64);
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.order-confirm-grid {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.order-confirm-row {
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 10px 0;
+  display: grid;
+  gap: 4px;
+  border-bottom: 1px solid rgba(43, 45, 66, 0.08);
+}
+
+.order-confirm-row span {
+  color: rgba(43, 45, 66, 0.56);
+  font-size: 13px;
+}
+
+.order-confirm-row strong {
+  color: var(--grabngo-midnight);
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+.order-confirm-row.amount-row {
+  border-bottom: none;
+  text-align: center;
+  gap: 3px;
+  padding: 16px 12px 10px;
+  margin-top: 4px;
+  background: linear-gradient(180deg, rgba(239, 123, 69, 0.06), rgba(237, 242, 244, 0.55));
+}
+
+.order-confirm-row .amount-highlight {
+  color: var(--grabngo-orange);
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.order-confirm-btn {
+  margin-top: 16px;
+  width: 100%;
+  min-height: 46px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--grabngo-orange) 0%, #f09a54 100%);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.order-confirm-btn:hover {
+  filter: brightness(0.96);
+}
+
+@media (max-width: 580px) {
+  .order-confirm-page {
+    padding: 12px;
+  }
+
+  .order-confirm-card {
+    padding: 20px;
+  }
+
+  .order-confirm-card h1 {
+    font-size: 28px;
+  }
+
+  .order-confirm-row strong {
+    font-size: 18px;
+  }
+
+  .order-confirm-row .amount-highlight {
+    font-size: 26px;
+  }
+}

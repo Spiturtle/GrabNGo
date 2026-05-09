@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo:wght@500;700&display=swap');
+
+:root {
+  --admin-bg: #f4f5ef;
+  --admin-ink: #1e1e1a;
+  --admin-accent: #e16428;
+  --admin-accent-deep: #b84e1c;
+  --admin-surface: #ffffff;
+  --admin-line: #d8d8d0;
+  --admin-green: #278049;
+  --admin-blue: #2f5fc6;
+  --admin-slate: #4f5f67;
+}
+
+.admin-dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-dashboard-page {
+  flex: 1;
+  margin-left: 280px;
+  color: var(--admin-ink);
+  background:
+    radial-gradient(circle at 14% 9%, #ffdcbf 0, #ffdcbf 12%, transparent 38%),
+    radial-gradient(circle at 92% 24%, #d8e7ff 0, #d8e7ff 14%, transparent 40%),
+    var(--admin-bg);
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+}
+
+.admin-dashboard-header {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 24px 26px;
+  background: #f4f5ef;
+  border-bottom: 1px solid var(--admin-line);
+}
+
+.admin-dashboard-header-content h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--admin-ink);
+}
+
+.admin-dashboard-header-content p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #6e6e66;
+}
+
+.admin-dashboard-main {
+  max-width: 100%;
+  margin: 0;
+  padding: 24px 26px 36px;
+}
+
+.admin-message {
+  margin: 12px 0 0;
+  border: 1px solid #d7d7d0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fdfdfb;
+  color: #3d3d35;
+}
+
+.admin-message.success {
+  border-color: #bde0c8;
+  background: #edf9f1;
+  color: #1f6f3d;
+}
+
+.admin-message.error {
+  border-color: #f0c8c8;
+  background: #fff0f0;
+  color: #aa2f2f;
+}
+
+.admin-dashboard-panels {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin-panel {
+  border: 1px solid var(--admin-line);
+  border-radius: 12px;
+  background: var(--admin-surface);
+  padding: 14px;
+}
+
+.admin-panel h3 {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+}
+
+.meal-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.meal-form input {
+  min-height: 42px;
+  border-radius: 10px;
+  border: 1px solid #d9d9d4;
+  padding: 0 12px;
+  font-family: inherit;
+}
+
+.availability-toggle {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.meal-form-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.meal-form-actions button,
+.action-buttons-cell button {
+  min-height: 36px;
+  border-radius: 8px;
+  border: 1px solid #d3d3cb;
+  background: #fffaf6;
+  color: #292924;
+  font-family: inherit;
+  font-weight: 600;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.meal-form-actions button.secondary {
+  background: #f4f4f1;
+}
+
+.action-buttons-cell {
+  display: flex;
+  gap: 8px;
+}
+
+.action-buttons-cell button.danger {
+  background: #fff0f0;
+  border-color: #f3cbcb;
+  color: #b53a3a;
+}
+
+.section-spacer {
+  margin-top: 18px;
+}
+
+.admin-table-wrap {
+  overflow-x: auto;
+}
+
+.admin-table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+}
+
+.admin-table-wrap th,
+.admin-table-wrap td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid #ecece7;
+  font-size: 0.86rem;
+}
+
+.admin-table-wrap th {
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #68685f;
+}
+
+.admin-table-wrap select {
+  min-height: 34px;
+  border: 1px solid #d4d4ce;
+  border-radius: 8px;
+  padding: 0 8px;
+  font-family: inherit;
+}
+
+.empty-table-row {
+  text-align: center;
+  color: #6e6e66;
+}
+
+.status-pill {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 5px 10px;
+  color: #fff;
+  font-size: 0.75rem;
+}
+
+.status-pill.available {
+  background: var(--admin-green);
+}
+
+.status-pill.unavailable {
+  background: var(--admin-slate);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .meal-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-dashboard-header {
+    height: auto;
+    padding: 12px;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .admin-dashboard-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

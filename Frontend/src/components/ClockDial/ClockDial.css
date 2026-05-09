@@ -1,0 +1,14 @@
+:root{--grabngo-midnight:#2b2d42;--grabngo-orange:#ef7b45;--grabngo-surface:#edf2f4}
+.clock-dial{display:flex;flex-direction:column;gap:10px}
+.clock-display{background:linear-gradient(180deg,#fff, #fff);border:1px solid rgba(43,45,66,0.06);padding:10px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.clock-display-time{font-weight:900;font-size:20px;color:var(--grabngo-midnight)}
+.clock-display-period{font-size:13px;font-weight:700;margin-left:8px;color:rgba(43,45,66,0.7)}
+.clock-controls{display:flex;gap:10px;align-items:flex-start}
+.clock-wheel{display:flex;flex-direction:column;gap:6px}
+.clock-wheel label{font-size:12px;font-weight:800;color:rgba(43,45,66,0.8)}
+.clock-wheel select{min-width:96px;padding:8px;border-radius:10px;border:1px solid rgba(43,45,66,0.12);background:var(--grabngo-surface);color:var(--grabngo-midnight);font-weight:700}
+.period-wheel .period-toggle{display:flex;gap:6px}
+.period-toggle button{min-width:56px;padding:8px;border-radius:10px;border:1px solid rgba(43,45,66,0.12);background:#fff;color:var(--grabngo-midnight);font-weight:800;cursor:pointer}
+.period-toggle button.active{background:var(--grabngo-orange);color:#fff;border-color:var(--grabngo-orange)}
+
+@media(max-width:760px){.clock-controls{flex-wrap:wrap}.clock-wheel select{min-width:72px}}

@@ -5,7 +5,13 @@
   --line: #7f7f7f;
 }
 
+.profile-layout {
+  display: flex;
+}
+
 .profile-page {
+  flex: 1;
+  margin-left: 280px;
   min-height: 100vh;
   background:
     radial-gradient(circle at 10% 10%, #f8f8f8 0%, #ececec 50%),

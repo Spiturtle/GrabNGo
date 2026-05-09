@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './profile.css'
 import logoOrange from '../../components/logo/logoorange.png'
+import DashboardSidebar from '../../components/sidebar/DashboardSidebar'
 import { changePassword, updateProfileName } from '../../api/authApi'
 
 const passwordRules = [
@@ -211,8 +212,10 @@ function Profile() {
   }
 
   return (
-    <div className="profile-page">
-      <header className="profile-header">
+    <div className="profile-layout">
+      <DashboardSidebar user={user} onLogout={handleSignOut} />
+      <div className="profile-page">
+        <header className="profile-header">
         <button
           type="button"
           className="logo-button"
@@ -448,6 +451,7 @@ function Profile() {
           </div>
         )}
       </main>
+      </div>
     </div>
   )
 }
