@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://localhost:8080/api/auth'
+// Use Vite env variable when available, otherwise default to local backend
+const API_ROOT = import.meta.env.VITE_API_URL || 'http://localhost:8080'
+const BASE_URL = `${API_ROOT}/api/auth`
 
 export const loginUser = (email, password) =>
   axios.post(`${BASE_URL}/login`, {

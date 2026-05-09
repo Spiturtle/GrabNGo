@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://localhost:8080/api/orders'
+const API_ROOT = import.meta.env.VITE_API_URL || 'http://localhost:8080'
+const BASE_URL = `${API_ROOT}/api/orders`
 
 export const createOrder = ({ orderId, mealId, customerEmail, customerName, pickupDate, pickupTime }) =>
   axios.post(BASE_URL, {
