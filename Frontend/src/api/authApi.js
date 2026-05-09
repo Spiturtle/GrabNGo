@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // Use Vite env variable when available, otherwise default to local backend
-const API_ROOT = import.meta.env.VITE_API_URL || 'http://localhost:8080'
+const API_ROOT = import.meta.env.VITE_API_URL || 'https://grabngo-rkkn.onrender.com'
 const BASE_URL = `${API_ROOT}/api/auth`
 
 export const loginUser = (email, password) =>
