@@ -5,6 +5,7 @@ WORKDIR /app
 # Copy the maven wrapper and pom file first (optimizes build caching)
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
+RUN chmod +x mvnw
 RUN ./mvnw dependency:go-offline
 
 # Copy the source code and build the jar
@@ -16,8 +17,8 @@ FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 
-# Expose the port Spring Boot runs on
+# Expose default Spring Boot port (Render will provide PORT env)
 EXPOSE 8080
 
-# Run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Run the application on Render-assigned port when available
+ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT:-8080} -jar app.jar"]
